@@ -1,0 +1,6 @@
+path: "/users"
+body:
+  email: #{email}
+output:
+  - id
+  - email
