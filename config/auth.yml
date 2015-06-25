@@ -1,6 +1,4 @@
-path: "/users"
-body:
-  email: #{email}
+email: v.g@gmail.com
 output:
   - id
   - email
