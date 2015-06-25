@@ -1,18 +1,23 @@
 require 'thor'
 require 'net/http'
+require 'yaml'
+require 'api_helper'
 
 class Maker < Thor
-  desc 'create', 'Create a user'
-	method_option :email, type: :string
-	def create_user
-    uri = "https://login.bcservices.dev/users"
-		body = { email: "test" }
-    headers = { "X-Auth-Client" => "test",
-			          "Auth-Token" => "1234",
-		            "Content-Type" => "application/json" }
+
+  desc 'create_user', 'Create a user'
+  method_option :email,    type: :string
+  method_option :scopes,   type: :array
+  method_option :is_owner, type: :boolean
+  method_option :store_id, type: :string
+  def create_user
+    conf = YAML::load_file(File.join(__dir__, '../config/auth.yml'))
+    puts "#{conf}"
+
+    request = ApiHelper.post(conf['uri']+ conf['path'], conf['body'])
+    puts "#{request}"
 
 
-    request = Net::HTTP.post.new(uri)
-		re
 	end
+
 end

@@ -2,15 +2,17 @@
 # uri
 # path
 # headers
-# client_id - BC App token from A&A
-# auth_token - BC App token from A&A
+# client_id - Dev Portal token from A&A
+# auth_token - Dev Portal token from A&A
 # body
 # output - info returned from the service after creation
 
-uri: "https://login.bcservices.dev"
+uri: "https://apps.bcservices.dev"
 path: "/users"
-client_id: #{}
-auth_token: #{}
+headers:
+  client_id: #{}
+  auth_token: #{}
+  content-type: "application/json"
 body:
   email: #{email}
   scopes: ["store_create_user", "store_edit_user", "store_delete_user"]
