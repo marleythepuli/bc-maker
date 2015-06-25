@@ -1,0 +1,2 @@
+# example
+./maker create app --id 4
