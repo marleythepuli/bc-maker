@@ -6,8 +6,8 @@ module ApiHelper
       request(:get, path)
     end
 
-    def post(path, content)
-      request(:post, path, content)
+    def post(path, content, headers)
+      request(:post, path, content, headers)
     end
 
     def post_without_payload(path)
@@ -22,10 +22,10 @@ module ApiHelper
       request(:put, path, content)
     end
 
-    def request(verb, path, data = '')
+    def request(verb, path, data = '', headers)
       url = URI.parse(path)
       path = url.path
-      http = Net::HTTP.new(path)
+      http = Net::HTTP.new(url.host, url.port)
 
       if url.scheme == 'https'
         http.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -48,8 +48,8 @@ module ApiHelper
       request['Content-Type']  = 'application/json'
       request['Accept']        = 'application/json'
       # TODO: update later
-      request['X-Auth-Client'] = 'mfgkyyb9augqtwbtp2ezq0i2bh6asqe'
-      request['X-Auth-Token']  = 'rlslauv3jrgs8hkse6fbrd9clqyynly'
+      request['X-Auth-Client'] = headers['client_id']
+      request['X-Auth-Token']  = headers['auth_token']
 
       http.request(request)
     end
