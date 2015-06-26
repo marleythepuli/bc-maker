@@ -1,11 +1,3 @@
-//# For adding a new service, define the following
-//# uri
-//# path
-//# headers
-//# client_id - Dev Portal token from A&A
-//# auth_token - Dev Portal token from A&A
-//# body
-//# output - info returned from the service after creation
 {
   "uri": "https://apps.bcservices.dev",
   "path": "/apps",
