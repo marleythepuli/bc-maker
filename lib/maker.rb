@@ -26,13 +26,19 @@ class Maker < Thor
   method_option :id
   desc 'create', 'CREATE user, app or brand from json config'
   def create(service)
-    f = File.open(File.join(__dir__, "../config/#{service}.json"), 'r')
-    conf = JSON.parse(f.read)
-    conf['body']['id'] = options[:id] if options[:id] != nil
+    config = File.exists?(File.join(__dir__, "../config/#{service}.json"))
 
-    resp = ApiHelper.post(conf['uri']+ conf['path'], conf['body'].to_json, conf['headers'])
+    unless config
+      say "Unable to locate your json file, create one or make sure you spelled it right ;)", :red
+    else
+      f = File.open(File.join(__dir__, "../config/#{service}.json"), 'r')
+      conf = JSON.parse(f.read)
+      conf['body']['id'] = options[:id] if options[:id] != nil
 
-    print_results(service, resp, conf)
+      resp = ApiHelper.post(conf['uri']+ conf['path'], conf['body'].to_json, conf['headers'])
+
+      print_results(service, resp, conf)
+    end
   end
 
   desc 'create_all', 'CREATE all user, app or brand from json config'
@@ -126,17 +132,17 @@ class Maker < Thor
     @@hash_header_str_ct = {'id'=> 8, 'name'=>65, 'status'=>50}
 
     def print_results(service, response, config)
-      body = JSON.parse(response.body)
-      output_keys = config['output']
-
       if response.is_a?(Net::HTTPOK)
-        puts "#{service} created:\n"
+        body = JSON.parse(response.body)
+        output_keys = config['output']
+
+        say "#{service} created:\n", :green
         output_keys.each do |index|
-          body.select { |key, value| puts "#{key}: #{value}" if key == index }
+          body.select { |key, value| say "  #{key}: #{value}" if key == index }
         end
       else
-        puts "Unable to create, see error from #{service}:\n"
-             "#{body}"
+        say "Unable to create, see error from #{service}:\n"\
+             "#{response.body}", :red
       end
     end
 
