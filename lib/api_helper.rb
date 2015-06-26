@@ -47,7 +47,7 @@ module ApiHelper
 
       request['Content-Type']  = 'application/json'
       request['Accept']        = 'application/json'
-      # TODO: update later
+
       if headers['request-type'] == 'basic'
         request.basic_auth(headers['client_id'], headers['auth_token'])
       else

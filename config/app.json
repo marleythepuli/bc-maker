@@ -2,12 +2,17 @@
   "uri": "https://apps.bcservices.dev",
   "path": "/apps",
   "headers": {
-    "client_id": "mqkewpten1ns1yn8sbnpbbqxhpque9r",
-    "auth_token": "hqa9v8l506ayuz5qix162uone9jlcw5",
+    "client_id": "nngijicjmjv2szrqsg7un6r0n3rmdp2",
+    "auth_token": "53iciy27zgzitv2yjmac96rha8b4a2w",
     "content-type": "application/json"
   },
   "body": {
     "name": "alex123",
-    "id" : "10"
-  }
+    "user_id" : "10"
+  },
+  "output": [
+    "id",
+    "name",
+    "developer_id"
+  ]
 }

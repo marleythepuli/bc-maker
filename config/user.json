@@ -1,8 +1,10 @@
 {
   "uri": "https://login.bcservices.dev",
   "path": "/users",
-  "client_id": "",
-  "auth_token": "",
+  "headers": {
+    "client_id": "mqkewpten1ns1yn8sbnpbbqxhpque9r",
+    "auth_token": "hqa9v8l506ayuz5qix162uone9jlcw5"
+  },
   "body": {
     "email": "alex.odvak123@bigcommerce.com",
     "scopes": [
@@ -12,5 +14,9 @@
     ],
     "is_owner": false,
     "id": "12345"
-  }
+  },
+  "output": [
+    "id",
+    "username"
+  ]
 }
