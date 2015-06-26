@@ -4,6 +4,9 @@ file = File.expand_path(File.symlink?(__FILE__) ? File.readlink(__FILE__) : __FI
 lib = "#{file}/../../lib"
 $LOAD_PATH.unshift lib unless $LOAD_PATH.include?(lib)
 
+# tell bundler where to look for the Gemfile
+ENV['BUNDLE_GEMFILE'] = "#{file}/../../Gemfile"
+
 require 'maker'
 
 Maker.start(ARGV)
