@@ -1,0 +1,26 @@
+{
+  "uri": "https://store-o8gfsgf5.bcapp.dev",
+  "path": "/api/v2/brands",
+  "headers": {"client_id": "testing",
+              "auth_token": "1347e4068b6aebd5f39137d5a81bc9e9c41ee37b",
+              "content-type": "application/json",
+              "request-type": "basic"},
+  "body":
+    {
+      "apple":
+      {
+        "name": "Apple",
+        "page_title": "Apples"
+      },
+      "banana":
+      {
+        "name": "Banana",
+        "page_title": "Bananas"
+      },
+      "kayumito":
+      {
+        "name": "Kayumito",
+        "page_title": "Kayumito"
+      }
+    }
+}

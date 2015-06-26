@@ -2,8 +2,8 @@ require 'openssl'
 
 module ApiHelper
   class << self
-    def get(path)
-      request(:get, path)
+    def get(path, headers)
+      request(:get, path, '', headers)
     end
 
     def post(path, content, headers)
@@ -14,8 +14,8 @@ module ApiHelper
       request(:post, path)
     end
 
-    def delete(path, resource)
-      request(:delete, "#{path}/#{resource}")
+    def delete(path, headers)
+      request(:delete, path, '', headers)
     end
 
     def put(path, content)
@@ -32,8 +32,6 @@ module ApiHelper
         http.use_ssl = true
       end
 
-      request = Net::HTTP::Get.new(path)
-
       case verb
       when :delete
         request = Net::HTTP::Delete.new(path)
@@ -43,13 +41,19 @@ module ApiHelper
       when :post
         request = Net::HTTP::Post.new(path)
         request.body = data
+      when :get
+        request = Net::HTTP::Get.new(path)
       end
 
       request['Content-Type']  = 'application/json'
       request['Accept']        = 'application/json'
       # TODO: update later
-      request['X-Auth-Client'] = headers['client_id']
-      request['X-Auth-Token']  = headers['auth_token']
+      if headers['request-type'] == 'basic'
+        request.basic_auth(headers['client_id'], headers['auth_token'])
+      else
+        request['X-Auth-Client'] = headers['client_id']
+        request['X-Auth-Token']  = headers['auth_token']
+      end
 
       http.request(request)
     end
