@@ -12,16 +12,14 @@ See a list of all the commands
 ```
 $ ./bin/maker
 Commands:
-  maker create          # CREATE user, app or brand from json config
-  maker create_all      # CREATE all user, app or brand from json config
-  maker delete_id       # DELETE user, app or brand by id
-  maker get_id          # GET user, app or brand by id
-  maker get_id_raw      # GET user, app or brand by id and display raw
-  maker help [COMMAND]  # Describe available commands or one specific command
+  maker create --what=WHAT --where=WHERE          # Create users in Auth, brands in BC ...
+  maker delete --id=ID --what=WHAT --where=WHERE  # Delete a user, app or brand by id
+  maker get --id=ID --what=WHAT --where=WHERE     # List a user, app or brand by id
+  maker help [COMMAND]                            # Describe available commands or one ...
 ```
 Create an app on App Registry
 ```
-$ ./bin/maker create app
+$ ./bin/maker create --what=app --where=apps
 app created:
 id: 13
 name: alex123
@@ -63,6 +61,5 @@ Example:
 
 ## Roadmap
 - Generate random data
-- Handle exceptions
 - Add tests
 - Instructions about environment variables (client_id & auth_token)
