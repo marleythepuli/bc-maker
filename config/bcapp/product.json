@@ -1,0 +1,19 @@
+{
+  "uri": "https://store-o8gfsgf5.bcapp.dev",
+  "path": "/api/v2/products",
+  "headers":
+  {
+    "client_id": "testing",
+    "auth_token": "1347e4068b6aebd5f39137d5a81bc9e9c41ee37b",
+    "request-type": "basic"
+  },
+  "body":
+    {
+
+    },
+  "output":
+  [
+    "id",
+    "name"
+  ]
+}

@@ -4,12 +4,18 @@
   "headers":
     {
       "client_id": "testing",
-      "auth_token": "1347e4068b6aebd5f39137d5a81bc9e9c41ee37b",
+      "auth_token": "aa2e40170affccfae0c9d5921a50908fdb518033",
       "request-type": "basic"
     },
   "body":
     {
-      "name": "Apple",
+      "name": "Bananapple",
       "page_title": "Apples"
-    }
+    },
+  "output":
+    [
+      "id",
+      "name",
+      "page_title"
+    ]
 }

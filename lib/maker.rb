@@ -23,13 +23,17 @@ class Maker < Thor
   ==============================================================
   '
 
+  method_option :where,      type: :string, required: :true
+  method_option :what,       type: :string, required: :true
+  method_option :store_hash, type: :string
   method_option :id
-  desc 'create', 'CREATE user, app or brand from json config'
-  def create(service)
-    config = File.exists?(File.join(__dir__, "../config/#{service}.json"))
+  desc 'create', 'Create users in Auth, brands in BC App, apps in App Registry, etc.)'
+  def create
+    service = "#{options[:where]}" + "/" +"#{options[:what]}"
+    config  = File.exists?(File.join(__dir__, "../config/#{service}.json"))
 
     unless config
-      say "Unable to locate your json file, create one or make sure you spelled it right ;)", :red
+      say "Unable to locate your config, create one or make sure you spelled it right ;)", :red
     else
       f = File.open(File.join(__dir__, "../config/#{service}.json"), 'r')
       conf = JSON.parse(f.read)
@@ -37,7 +41,7 @@ class Maker < Thor
 
       resp = ApiHelper.post(conf['uri']+ conf['path'], conf['body'].to_json, conf['headers'])
 
-      print_results(service, resp, conf)
+      print_results(options[:where], resp, conf)
     end
   end
 
@@ -132,13 +136,13 @@ class Maker < Thor
     @@hash_header_str_ct = {'id'=> 8, 'name'=>65, 'status'=>50}
 
     def print_results(service, response, config)
-      if response.is_a?(Net::HTTPOK)
+      if response.is_a?(Net::HTTPOK) || response.is_a?(Net::HTTPCreated)
         body = JSON.parse(response.body)
         output_keys = config['output']
 
         say "#{service} created:\n", :green
         output_keys.each do |index|
-          body.select { |key, value| say "  #{key}: #{value}" if key == index }
+          body.select { |key, value| puts "  #{key}: #{value}" if key == index }
         end
       else
         say "Unable to create, see error from #{service}:\n"\

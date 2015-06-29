@@ -1,0 +1,27 @@
+{
+  "uri": "https://login.bcservices.dev",
+  "path": "/stores/vvc0o1ud/users",
+  "headers":
+  {
+    "client_id": "pytg1v27966h363c2qah6w5fronm4g1",
+    "auth_token": "p71buu4b4epb385eq6h1c0aazfpzice"
+  },
+  "body":
+  {
+    "email": "test@bigcommerce.com",
+    "scopes":
+    [
+      "store_create_user",
+      "store_edit_user",
+      "store_delete_user"
+    ],
+    "is_owner": false,
+    "id": "vvc0o1ud"
+  },
+  "output":
+  [
+    "id",
+    "username",
+    "email"
+  ]
+}

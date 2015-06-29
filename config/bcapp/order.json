@@ -1,15 +1,17 @@
 {
   "uri": "https://store-o8gfsgf5.bcapp.dev",
   "path": "/api/v2/orders",
-  "headers": {"client_id": "testing",
-    "auth_token": "1347e4068b6aebd5f39137d5a81bc9e9c41ee37b",
-    "request-type": "basic"},
+  "headers":
+  {
+    "client_id": "testing",
+    "auth_token": "aa2e40170affccfae0c9d5921a50908fdb518033",
+    "request-type": "basic"
+  },
   "body":
   {
-
     "Alfreid":
-      {
-        "customer_id": 1,
+    {
+      "customer_id": 1,
       "status_id": 11,
       "date_created": "Thu, 04 Oct 2012 03:24:40 +0000",
       "subtotal_ex_tax": 1705,
@@ -33,7 +35,7 @@
       "payment_method": "NMI",
       "payment_provider_id": "2722473869",
       "billing_address":
-        {
+      {
         "first_name": "Trisha",
         "last_name": "McLaughlin",
         "company": "",
@@ -46,33 +48,36 @@
         "country_iso2": "US",
         "phone": "",
         "email": "elsie@example.com"
-        },
+      },
       "shipping_addresses":
-        [
-          {
-              "first_name": "Trisha",
-            "last_name": "McLaughlin",
-            "company": "Acme Pty Ltd",
-            "street_1": "566 Sussex St",
-            "street_2": "",
-            "city": "Austin",
-            "state": "Texas",
-            "zip": "78757",
-            "country": "United States",
-            "country_iso2": "US",
-            "phone": "",
-            "email": "elsie@example.com"
-          }
-        ],
+      [
+        {
+          "first_name": "Trisha",
+          "last_name": "McLaughlin",
+          "company": "Acme Pty Ltd",
+          "street_1": "566 Sussex St",
+          "street_2": "",
+          "city": "Austin",
+          "state": "Texas",
+          "zip": "78757",
+          "country": "United States",
+          "country_iso2": "US",
+          "phone": "",
+          "email": "elsie@example.com"
+        }
+      ],
       "products":
         [
           {
-              "product_id": 74,
+            "product_id": 74,
             "quantity": 2
           }
         ],
       "external_source": "POS"
-      }
-
-  }
+    }
+  },
+  "output":
+  [
+    "id"
+  ]
 }
