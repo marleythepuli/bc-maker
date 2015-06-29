@@ -24,6 +24,7 @@ module ApiHelper
 
     def request(verb, path, data = '', headers)
       url = URI.parse(path)
+    #  binding.pry
       path = url.path
       http = Net::HTTP.new(url.host, url.port)
 
